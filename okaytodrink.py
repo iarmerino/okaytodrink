@@ -49,10 +49,11 @@ empty2 = Label().pack()
 menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff = 0)
-filemenu.add_command(label = "Close")
+filemenu.add_command(label = "Close", command = quit)
 menubar.add_cascade(label = "File", menu = filemenu)
 
 #Help Menu
+
 
 helpmenu = Menu(menubar, tearoff = 0)
 helpmenu.add_command(label = "Help")

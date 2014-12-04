@@ -4,7 +4,7 @@ from tkinter import *
 def keyPress(event):
     if event.char in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'):
         print(event.char)
-    elif event.keysym not in ('Alt_r', 'Alt_l', 'F4', 'BackSpace', 'Tab'):
+    elif event.keysym not in ('Alt_r', 'Alt_l', 'F4', 'BackSpace'):
         print(event.keysym)
         return 'break'
 
@@ -20,28 +20,22 @@ def calculate():
         messagebox.showinfo(title='Result', message="For your good health, stop drinking NOW!")
 
 root = Tk()
-root.geometry('300x200+500+200')
+root.geometry('300x350+500+200')
 root.title('Okay to Drink??')
 
 volume = StringVar()
 abv = StringVar()
 
-empty0 = Label().pack()
-
-label1 = Label(text='Volume (ml)').pack()
+label1 =mlabel = Label(text='Volume').pack()
 entry1 = Entry(textvariable=volume)
 entry1.bind('<KeyPress>', keyPress)
 entry1.pack()
 entry1.focus()
 
-empty1 = Label().pack()
-
-label2 = Label(text='Alcohol by Volume (%/vol)').pack()
+label2 = Label(text='Alcohol by Volume').pack()
 entry2 = Entry(textvariable=abv)
 entry2.bind('<KeyPress>', keyPress)
 entry2.pack()
 entry2.focus()
-
-empty2 = Label().pack()
 
 mbutton = Button(text='OK', command=calculate).pack()

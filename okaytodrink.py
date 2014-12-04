@@ -54,15 +54,22 @@ menubar.add_cascade(label = "File", menu = filemenu)
 
 #Help Menu
 
+def menu_help():
+    messagebox.showinfo(title='Help', message="How to use this program")
+    return
 
 helpmenu = Menu(menubar, tearoff = 0)
-helpmenu.add_command(label = "Help")
+helpmenu.add_command(label = "Help", command = menu_help)
 menubar.add_cascade(label = "Help", menu = helpmenu)
 
 #About Menu
 
+def menu_about():
+    messagebox.showinfo(title='About', message="Created By ...")
+    return
+    
 aboutmenu = Menu(menubar, tearoff = 0)
-aboutmenu.add_command(label = "About")
+aboutmenu.add_command(label = "About", command = menu_about)
 menubar.add_cascade(label = "About", menu = aboutmenu)
 
 root.config(menu = menubar)

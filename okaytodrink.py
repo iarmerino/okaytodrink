@@ -18,15 +18,19 @@ def calculate():
         messagebox.showinfo(title='Result', message="Enough drinking for today.")
     else:
         messagebox.showinfo(title='Result', message="For your good health, stop drinking NOW!")
-
+        
 root = Tk()
-root.geometry('300x200+500+200')
+root.geometry('600x400+500+200')
 root.title('Okay to Drink??')
 
 volume = StringVar()
 abv = StringVar()
 
-empty0 = Label().pack()
+
+img = PhotoImage(file="banner.gif")
+mlabel = Label(root, image=img)
+mlabel.pack()
+
 
 label1 = Label(text='Volume (ml)').pack()
 entry1 = Entry(textvariable=volume)

@@ -20,7 +20,7 @@ def calculate():
         messagebox.showinfo(title='Result', message="For your good health, stop drinking NOW!")
         
 root = Tk()
-root.geometry('600x400+500+200')
+root.geometry('400x400+500+200')
 root.title('Okay to Drink??')
 
 volume = StringVar()

@@ -18,30 +18,66 @@ def calculate():
         messagebox.showinfo(title='Result', message="Enough drinking for today.")
     else:
         messagebox.showinfo(title='Result', message="For your good health, stop drinking NOW!")
-
+        
 root = Tk()
-root.geometry('300x200+500+200')
+root.geometry('350x400+500+200')
 root.title('Okay to Drink??')
 
 volume = StringVar()
 abv = StringVar()
+unit = StringVar()
+unit.set("mL")
 
-empty0 = Label().pack()
 
-label1 = Label(text='Volume (ml)').pack()
-entry1 = Entry(textvariable=volume)
+img = PhotoImage(file="banner.gif")
+mlabel = Label(root, image=img)
+mlabel.place(x=20, y=1)
+
+
+label1 = Label(text='Volume').place(x=140, y=210)
+entry1 = Entry(textvariable=volume, width=15)
 entry1.bind('<KeyPress>', keyPress)
-entry1.pack()
+entry1.place(x=100, y=240)
 entry1.focus()
 
-empty1 = Label().pack()
+unit_option = OptionMenu(root, unit, "mL", "glass", "bottle", "shot")
+unit_option.place(x=200, y=230)
 
-label2 = Label(text='Alcohol by Volume (%/vol)').pack()
-entry2 = Entry(textvariable=abv)
+label2 = Label(text='Alcohol by Volume (%/vol)').place(x=90, y=270)
+entry2 = Entry(textvariable=abv, width=25)
 entry2.bind('<KeyPress>', keyPress)
-entry2.pack()
-entry2.focus()
+entry2.place(x=100, y=300)
 
-empty2 = Label().pack()
 
-mbutton = Button(text='OK', command=calculate).pack()
+mbutton = Button(text='Okay to drink?', command=calculate).place(x=130, y=350)
+
+#Menubar
+
+menubar = Menu(root)
+
+filemenu = Menu(menubar, tearoff = 0)
+filemenu.add_command(label = "Close", command = quit)
+menubar.add_cascade(label = "File", menu = filemenu)
+
+#Help Menu
+
+def menu_help():
+    messagebox.showinfo(title='Help', message="How to use this program")
+    return
+
+helpmenu = Menu(menubar, tearoff = 0)
+helpmenu.add_command(label = "Help", command = menu_help)
+menubar.add_cascade(label = "Help", menu = helpmenu)
+
+#About Menu
+
+def menu_about():
+    messagebox.showinfo(title='About', message="Created By\nKarn Niamchan 57070004\nJirapat Kuengwong 57070021")
+    return
+    
+aboutmenu = Menu(menubar, tearoff = 0)
+aboutmenu.add_command(label = "About", command = menu_about)
+menubar.add_cascade(label = "About", menu = aboutmenu)
+
+root.config(menu = menubar)
+

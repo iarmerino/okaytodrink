@@ -9,9 +9,17 @@ def keyPress(event):
         return 'break'
 
 def calculate():
-    volume1 = volume.get()
-    abv1 = abv.get()
-    alcohol_unit = (int(volume1)*int(abv1))/1000.0
+    volume1 = float(volume.get())
+    abv1 =float(abv.get())
+    if unit.get() == 'glass':
+        volume1 *= 250
+    elif unit.get() == 'bottle':
+        volume1 *= 640
+    elif unit.get() == 'shot':
+        volume1 *= 144
+
+        
+    alcohol_unit = (volume1*abv1)/1000.0
     if alcohol_unit < 3:
         messagebox.showinfo(title='Result', message="It's okay to keep drinking.")
     elif alcohol_unit >= 3 and alcohol_unit < 4:
@@ -20,13 +28,15 @@ def calculate():
         messagebox.showinfo(title='Result', message="For your good health, stop drinking NOW!")
         
 root = Tk()
-root.geometry('350x400+500+200')
+root.geometry('350x450+500+200')
 root.title('Okay to Drink??')
 
 volume = StringVar()
 abv = StringVar()
 unit = StringVar()
-unit.set("mL")
+unit.set('mL')
+alc_type = StringVar()
+alc_type.set('Beer(5 %/v)')
 
 
 img = PhotoImage(file="banner.gif")
@@ -43,13 +53,17 @@ entry1.focus()
 unit_option = OptionMenu(root, unit, "mL", "glass", "bottle", "shot")
 unit_option.place(x=200, y=230)
 
-label2 = Label(text='Alcohol by Volume (%/vol)').place(x=90, y=270)
-entry2 = Entry(textvariable=abv, width=25)
+label3 = Label(text='Type of alcohol(Alcohol by Volume)').place(x=65, y=280)
+
+type_option = OptionMenu(root, alc_type, 'Beer(5 %/v)', 'Wine(13 %/v)', 'Whiskey(40 %/v)', 'Vodka(45 %/v)', 'Other...')
+type_option.place(x=60, y=310)
+
+entry2 = Entry(textvariable=abv, width=10)
 entry2.bind('<KeyPress>', keyPress)
-entry2.place(x=100, y=300)
+entry2.place(x=200, y=320)
 
 
-mbutton = Button(text='Okay to drink?', command=calculate).place(x=130, y=350)
+mbutton = Button(text='Okay to drink?', command=calculate).place(x=130, y=380)
 
 #Menubar
 

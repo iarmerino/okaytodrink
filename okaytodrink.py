@@ -80,4 +80,3 @@ aboutmenu.add_command(label = "About", command = menu_about)
 menubar.add_cascade(label = "About", menu = aboutmenu)
 
 root.config(menu = menubar)
-

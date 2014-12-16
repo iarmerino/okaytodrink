@@ -28,7 +28,7 @@ def calculate():
         messagebox.showinfo(title='Result', message="For your good health, stop drinking NOW!")
         
 root = Tk()
-root.geometry('350x450+500+200')
+root.geometry('350x400+500+200')
 root.title('Okay to Drink??')
 
 volume = StringVar()
@@ -39,31 +39,31 @@ alc_type = StringVar()
 alc_type.set('Beer(5 %/v)')
 
 
-img = PhotoImage(file="banner.gif")
+img = PhotoImage(file="new_banner.gif")
 mlabel = Label(root, image=img)
-mlabel.place(x=20, y=1)
+mlabel.place(x=3, y=1)
 
 
-label1 = Label(text='Volume').place(x=140, y=210)
+label1 = Label(text='Volume').place(x=140, y=145)
 entry1 = Entry(textvariable=volume, width=15)
 entry1.bind('<KeyPress>', keyPress)
-entry1.place(x=100, y=240)
+entry1.place(x=100, y=180)
 entry1.focus()
 
-unit_option = OptionMenu(root, unit, "mL", "glass", "bottle", "shot")
-unit_option.place(x=200, y=230)
+unit_option = OptionMenu(root, unit, 'mL', 'glass', 'bottle', 'shot')
+unit_option.place(x=200, y=170)
 
-label3 = Label(text='Type of alcohol(Alcohol by Volume)').place(x=65, y=280)
+label3 = Label(text='Type of alcohol(Alcohol by Volume)').place(x=65, y=215)
 
 type_option = OptionMenu(root, alc_type, 'Beer(5 %/v)', 'Wine(13 %/v)', 'Whiskey(40 %/v)', 'Vodka(45 %/v)', 'Other...')
-type_option.place(x=60, y=310)
+type_option.place(x=60, y=250)
 
 entry2 = Entry(textvariable=abv, width=10)
 entry2.bind('<KeyPress>', keyPress)
-entry2.place(x=200, y=320)
+entry2.place(x=200, y=260)
 
 
-mbutton = Button(text='Okay to drink?', command=calculate).place(x=130, y=380)
+mbutton = Button(text='Okay to drink?', command=calculate).place(x=130, y=310)
 
 #Menubar
 
